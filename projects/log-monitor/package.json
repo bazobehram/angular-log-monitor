@@ -1,21 +1,18 @@
 {
-  "name": "ngx-log-monitor",
-  "version": "1.2.0",
-  "author": "Aslan VATSAEV (@avatsaev)",
-  "keywords": ["ngx", "angular", "logs", "log monitor"],
+  "name": "angular-log-monitor",
+  "version": "0.0.1",
+  "author": "Behram Bazo",
+  "keywords": ["angular", "logs", "log monitor"],
   "license": "MIT",
   "description": "Log monitoring component for Angular",
   "repository": {
     "type": "git",
-    "url": "git@github.com:avatsaev/ngx-log-monitor.git"
+    "url": "https://github.com/bazobehram/angular-log-monitor.git"
   },
-  "contributors": ["Aslan VATSAEV"],
-  "homepage": "https://github.com/avatsaev/ngx-log-monitor",
+  "contributors": ["Behram Bazo", "Aslan VATSAEV"],
+  "homepage": "https://github.com/bazobehram/angular-log-monitor",
   "dependencies": {
     "tslib": "^2.0.0"
   },
-  "peerDependencies": {
-    "@angular/common": "^6.0.0",
-    "@angular/core": "^6.0.0"
-  }
+  "sideEffects": false
 }
