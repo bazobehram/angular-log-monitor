@@ -3,43 +3,47 @@ import {
   ChangeDetectionStrategy,
   Component,
   ElementRef,
-  Input, NgZone,
+  Input,
+  NgZone,
   OnChanges,
   SimpleChanges,
-  ViewChild
-} from '@angular/core';
-import {LogMessage} from './models/log-message.model';
-import {normalizeLogMessage} from './helpers/log-message.helper';
+  ViewChild,
+} from "@angular/core";
+import { LogMessage } from "./models/log-message.model";
+import { normalizeLogMessage } from "./helpers/log-message.helper";
+import { NgClass } from "@angular/common";
 
 @Component({
-  selector: 'log-monitor',
-  templateUrl: './log-monitor.component.html',
-  styleUrls: ['./log-monitor.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  selector: "log-monitor",
+  templateUrl: "./log-monitor.component.html",
+  styleUrls: ["./log-monitor.component.scss"],
+  standalone: true,
+  imports: [NgClass],
+  
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LogMonitorComponent implements OnChanges, AfterViewInit {
-
   @Input() title;
   @Input() logStream: LogMessage;
   @Input() history: LogMessage[] = [];
-  @Input() theme: 'dark' | 'light' = 'dark';
+  @Input() theme: "dark" | "light" = "dark";
   @Input() icons = true;
-  @Input() customClass = 'log-container';
+  @Input() customClass = "log-container";
   @Input() animated = true;
-  @ViewChild('container') container: ElementRef;
+  @ViewChild("container") container: ElementRef;
 
-  constructor(private zone: NgZone) { }
+  constructor(private zone: NgZone) {}
 
   ngOnChanges(changes: SimpleChanges) {
-
-    if (changes['history']) {
-      this.history = changes['history'].currentValue.map(normalizeLogMessage);
+    if (changes["history"]) {
+      this.history = changes["history"].currentValue.map(normalizeLogMessage);
     }
 
-    if (changes['logStream'] && changes['logStream'].currentValue) {
-
+    if (changes["logStream"] && changes["logStream"].currentValue) {
       this.zone.run(() => {
-        const normalizedMsg = normalizeLogMessage(changes['logStream'].currentValue);
+        const normalizedMsg = normalizeLogMessage(
+          changes["logStream"].currentValue
+        );
         this.history.push(normalizedMsg);
         setTimeout(() => this.scrollToBottom());
       });
@@ -51,7 +55,7 @@ export class LogMonitorComponent implements OnChanges, AfterViewInit {
   }
 
   private scrollToBottom() {
-    this.container.nativeElement.scrollTop = this.container.nativeElement.scrollHeight;
+    this.container.nativeElement.scrollTop =
+      this.container.nativeElement.scrollHeight;
   }
-
 }

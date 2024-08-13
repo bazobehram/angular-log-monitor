@@ -1,7 +1,6 @@
 <!--The content below is only a placeholder and can be replaced.-->
 
 <div class="container">
-
   <h1>NGX Log Monitor</h1>
   <span class="title">Dark theme:</span>
   <log-monitor
@@ -18,8 +17,6 @@
     theme="light"
   ></log-monitor>
 
-
-
   <span class="title">With title dark:</span>
 
   <log-monitor
@@ -27,8 +24,6 @@
     [logStream]="logStream$ | async"
     title="Admin logs"
   ></log-monitor>
-
-
 
   <span class="title">No icons:</span>
 
@@ -38,7 +33,6 @@
     [icons]="false"
   ></log-monitor>
 
-
   <span class="title">Hydrated log history:</span>
 
   <log-monitor
@@ -47,7 +41,6 @@
     [history]="logs"
   ></log-monitor>
 
-
   <span class="title">No animation:</span>
 
   <log-monitor
@@ -55,7 +48,6 @@
     [logStream]="logStream$ | async"
     [animated]="false"
   ></log-monitor>
-
 
   <div class="footer">
     Created by
@@ -68,7 +60,4 @@
       <i class="fab fa-github"></i> GitHub
     </a>
   </div>
-
 </div>
-
-
